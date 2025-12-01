@@ -1,12 +1,22 @@
 import numpy as np
 import pandas as pd
 
-# load in kD data
+"""
+This program uses a monte carlo simulation to explore how variability in binding free energy affects 
+protein–ligand binding. By sampling experimentally yielded Kds and converting them into binding free energies,
+this simulation provides insights on expected binding outcomes. This approach is especially useful for 
+under-researched protein–ligand complexes, where experimental data is sparse and binding behavior is uncertain.
+"""
+
+# The idea is that delta G represents thermodynamic favorability, so we randomly sample delta G values from a 
+# distribution for each trial in the simulation, and use it to calculate probability of binding
+
+# Load in kD data
 df = pd.read_csv("gefitnib_egfr.csv")
 Kd = df["Standard Value"].values
 Kd *= 1e-9
 
-# convert kDs -> delta Gs
+# Convert kDs -> delta Gs
 R = 1.987e-3
 T = 298
 deltaG = R * T * np.log(Kd)
