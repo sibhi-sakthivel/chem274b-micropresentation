@@ -53,3 +53,6 @@ FreeEnergyDistribution.png          # Free energy distribution plot
 BindingProbabilityDistribution.png  # Binding probability distribution plot
 requirements.txt                    # Python dependencies
 README.md                           # Overview & setup instructions
+
+# Acknowledgments
+This project uses standard Python libraries (numpy, pandas, matplotlib) for data handling and visualization. All Monte Carlo algorithms and binding calculations were developed by the authors of this repository.
