@@ -43,6 +43,7 @@ def monte_carlo_sim(num_trials = 10000, ligand_concentration_nM = 10):
 N = 10000   # number of trials
 L_nM = 10   # ligand concentration (nM)
 
+# Run simulation
 dG, Kd, p, binding_events = monte_carlo_sim(num_trials=N, ligand_concentration_nM=L_nM)
 
 # Plot delta G and Kd distributions
@@ -65,7 +66,7 @@ print("Monte Carlo Simulation of EGFR–Gefitinib Binding")
 print(f"Trials: {N}")
 print(f"Ligand concentration: {L_nM} nM")
 print(f"Mean delta G: {np.mean(dG):.2f} J/mol")
-print(f"Mean Kd: {np.mean(Kd)*1e9:.2f} nM")
+print(f"Mean Kd: {np.mean(Kd)*(10**(-9)):.2f} nM")
 print(f"Mean binding probability: {np.mean(p)*100:.1f}%")
 print(f"Binding events: {np.sum(binding_events)} / {N}")
 
