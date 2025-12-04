@@ -66,3 +66,4 @@ print(f"Mean delta G: {np.mean(dG):.2f} J/mol")
 print(f"Mean Kd: {np.mean(Kd)*1e9:.2f} nM")
 print(f"Mean binding probability: {np.mean(p)*100:.1f}%")
 print(f"Binding events: {np.sum(binding_events)} / {N}")
+
