@@ -9,22 +9,20 @@ this simulation provides insights on expected binding outcomes. This approach is
 under-researched protein–ligand complexes, where experimental data is sparse and binding behavior is uncertain.
 """
 
-# hello test
-
 # Load in kD data
 df = pd.read_csv("gefitnib_egfr.csv")
 Kd = df["Standard Value"].values
-Kd *= 1e-9
+Kd *= 10**(-9)  # convert from nM -> M
 
 # Convert kDs -> delta Gs
-R = 1.987e-3
-T = 298
+R = 8.31446     # gas constant (J / (mol*K))
+T = 298         # temperature (Kelvin, 25 C)
 deltaG = R * T * np.log(Kd)
 
 def monte_carlo_sim(num_trials = 10000, ligand_concentration_nM = 10):
     
      # Convert ligand concentration from nM -> M
-    L = ligand_concentration_nM * 1e-9
+    L = ligand_concentration_nM * 10**(-9)
     
     # Randomly sample delta G values - normal distribution
     mu = deltaG.mean()
@@ -37,7 +35,7 @@ def monte_carlo_sim(num_trials = 10000, ligand_concentration_nM = 10):
     # Compute binding probability
     p_binding = L / (L + sampled_Kd)
 
-    # Generate Bernoulli binding events
+    # Simulate binding events
     binding_events = np.random.binomial(1, p_binding)
 
     return sampled_deltaG, sampled_Kd, p_binding, binding_events
@@ -47,11 +45,12 @@ L_nM = 10   # ligand concentration (nM)
 
 dG, Kd, p, binding_events = monte_carlo_sim(num_trials=N, ligand_concentration_nM=L_nM)
 
-#plt.hist(dG, bins=30, edgecolor='blue')
-#plt.title("Histogram of Sampled Binding Free Energies (ΔG)")
-#plt.xlabel("ΔG (kcal/mol)")
-#plt.ylabel("Count")
-#plt.show()
+# Plot delta G and Kd distributions
+plt.hist(dG, bins=30, edgecolor='blue')
+plt.title("Histogram of Sampled Binding Free Energies (ΔG)")
+plt.xlabel("ΔG (kcal/mol)")
+plt.ylabel("Count")
+plt.show()
 
 plt.hist(p, bins=30, edgecolor='blue')
 plt.title("Histogram of Binding Probabilities")
@@ -59,7 +58,7 @@ plt.xlabel("Binding Probability")
 plt.ylabel("Count")
 plt.show()
 
-
+# Print simulation results
 print("Monte Carlo Simulation of EGFR–Gefitinib Binding")
 print(f"Trials: {N}")
 print(f"Ligand concentration: {L_nM} nM")
