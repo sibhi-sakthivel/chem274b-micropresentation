@@ -3,14 +3,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 """
-This program uses a monte carlo simulation to explore how variability in binding free energy affects 
-protein–ligand binding. By sampling experimentally yielded Kds and converting them into binding free energies,
+This program uses a monte carlo simulation to explore how variability in thermodynamics and binding free energy 
+affects protein–ligand binding. By sampling experimentally yielded Kds and converting them into binding free energies,
 this simulation provides insights on expected binding outcomes. This approach is especially useful for 
 under-researched protein–ligand complexes, where experimental data is sparse and binding behavior is uncertain.
 """
 
-# The idea is that delta G represents thermodynamic favorability, so we randomly sample delta G values from a 
-# distribution for each trial in the simulation, and use it to calculate probability of binding
+# hello test
 
 # Load in kD data
 df = pd.read_csv("gefitnib_egfr.csv")
@@ -31,7 +30,6 @@ def monte_carlo_sim(num_trials = 10000, ligand_concentration_nM = 10):
     mu = deltaG.mean()
     sigma = deltaG.std()
     sampled_deltaG = np.random.normal(mu, sigma, size=num_trials)
-    # sampled_deltaG = np.random.choice(deltaG, size=num_trials, replace=True)
 
     # Convert sampled delta G back into Kd
     sampled_Kd = np.exp(sampled_deltaG / (R * T))
@@ -68,4 +66,4 @@ print(f"Ligand concentration: {L_nM} nM")
 print(f"Mean delta G: {np.mean(dG):.2f} kcal/mol")
 print(f"Mean Kd: {np.mean(Kd)*1e9:.2f} nM")
 print(f"Mean binding probability: {np.mean(p)*100:.1f}%")
-print(f"Binding events: {np.sum(binding_events)} / {N}")# test
+print(f"Binding events: {np.sum(binding_events)} / {N}")
