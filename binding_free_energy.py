@@ -50,12 +50,14 @@ plt.hist(dG, bins=30, edgecolor='blue')
 plt.title("Histogram of Sampled Binding Free Energies (ΔG)")
 plt.xlabel("ΔG (kcal/mol)")
 plt.ylabel("Count")
+plt.savefig("FreeEnergyDistribution.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 plt.hist(p, bins=30, edgecolor='blue')
 plt.title("Histogram of Binding Probabilities")
 plt.xlabel("Binding Probability")
 plt.ylabel("Count")
+plt.savefig("BindingProbabilityDistribution.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 # Print simulation results
