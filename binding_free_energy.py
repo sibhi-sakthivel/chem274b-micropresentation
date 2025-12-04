@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 """
 This program uses a monte carlo simulation to explore how variability in binding free energy affects 
@@ -47,6 +48,19 @@ N = 10000   # number of trials
 L_nM = 10   # ligand concentration (nM)
 
 dG, Kd, p, binding_events = monte_carlo_sim(num_trials=N, ligand_concentration_nM=L_nM)
+
+#plt.hist(dG, bins=30, edgecolor='blue')
+#plt.title("Histogram of Sampled Binding Free Energies (ΔG)")
+#plt.xlabel("ΔG (kcal/mol)")
+#plt.ylabel("Count")
+#plt.show()
+
+plt.hist(p, bins=30, edgecolor='blue')
+plt.title("Histogram of Binding Probabilities")
+plt.xlabel("Binding Probability")
+plt.ylabel("Count")
+plt.show()
+
 
 print("Monte Carlo Simulation of EGFR–Gefitinib Binding")
 print(f"Trials: {N}")
