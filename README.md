@@ -46,12 +46,12 @@ L_nM = 10           # ligand concentration (nM)
 ```
 
 # Repository Contents
-binding_free_energy.py              # Main simulation script
-gefitinib_egfr.csv                  # Sample dataset with experimentally yielded Kds
-FreeEnergyDistribution.png          # Free energy distribution plot
-BindingProbabilityDistribution.png  # Binding probability distribution plot
-requirements.txt                    # Python dependencies
-README.md                           # Overview & setup instructions
+binding_free_energy.py              # Main simulation script  
+gefitinib_egfr.csv                  # Sample dataset with experimentally yielded Kds  
+FreeEnergyDistribution.png          # Free energy distribution plot  
+BindingProbabilityDistribution.png  # Binding probability distribution plot  
+requirements.txt                    # Python dependencies  
+README.md                           # Overview & setup instructions  
 
 # Acknowledgments
 This project uses standard Python libraries (numpy, pandas, matplotlib) for data handling and visualization. All Monte Carlo algorithms and binding calculations were developed by the authors of this repository.
