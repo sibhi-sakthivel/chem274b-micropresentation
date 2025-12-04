@@ -36,8 +36,7 @@ https://www.ebi.ac.uk/chembl/explore/activities/STATE_ID:S_ELsqXybdbPWYqKDsPEIA%
 
 # Modifying Simulation Parameters
 
-You can adjust the number of Monte Carlo trials or modify simulation parameters by editing 
-the constants in `binding_free_energy.py`:
+You can adjust the number of Monte Carlo trials or modify simulation parameters by editing the constants in `binding_free_energy.py`:
 
 ```python
 N = 10000           # number of Monte Carlo iterations
